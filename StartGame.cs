@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NAudio.Wave;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,11 +13,29 @@ namespace WhoWantsToBeAMillionaire
 {
     public partial class StartGame : Form
     {
+        private WaveOutEvent outputDevice;
+        private AudioFileReader audioFile;
+        bool isStopped = false;
         public StartGame()
         {
             InitializeComponent();
             MessageBox.Show("При выборе подсказки 'Звонок другу' вам будет нужно набрать номера телефонов 5 друзей. При активации подсказки будет необходимо по памяти набрать один из этих 5 номеров");
             StartPosition = FormStartPosition.CenterScreen;
+            string audioFilePath = @"../../audios/hello-new-punter-2008-long.mp3";
+
+            outputDevice = new WaveOutEvent();
+            audioFile = new AudioFileReader(audioFilePath);
+            outputDevice.Init(audioFile);
+            outputDevice.PlaybackStopped += start_OutputDevice_PlaybackStopped;
+        }
+
+        private void start_OutputDevice_PlaybackStopped(object sender, StoppedEventArgs e)
+        {
+            if (e.Exception == null && !isStopped) // Проверка на завершение воспроизведения без ошибок
+            {
+                audioFile.Position = 0; // Сброс позиции аудиофайла на начало
+                outputDevice.Play(); // Начать воспроизведение заново
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -47,6 +66,10 @@ namespace WhoWantsToBeAMillionaire
                     }
                 }
                 this.Hide();
+                isStopped = true;
+                outputDevice.Stop();
+                audioFile.Dispose();
+                outputDevice.Dispose();
                 if (helps.Contains(Helps.callFriend))
                 {
                     Form1.helps = helps;
@@ -74,6 +97,11 @@ namespace WhoWantsToBeAMillionaire
                 e.NewValue = CheckState.Unchecked;
                 MessageBox.Show("Можно выбрать только 3 подсказки!");
             }
+        }
+
+        private void StartGame_Load(object sender, EventArgs e)
+        {
+            outputDevice.Play();
         }
     }
 }

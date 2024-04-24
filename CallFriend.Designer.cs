@@ -88,6 +88,8 @@
             this.Controls.Add(this.label1);
             this.Name = "CallFriend";
             this.Text = "CallFriend";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CallFriend_FormClosing);
+            this.Load += new System.EventHandler(this.CallFriend_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -86,6 +86,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Sum";
             this.Text = "Sum";
+            this.Load += new System.EventHandler(this.Sum_Load);
             this.ResumeLayout(false);
 
         }

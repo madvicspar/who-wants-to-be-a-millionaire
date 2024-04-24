@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NAudio.Wave;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
@@ -24,6 +25,9 @@ namespace WhoWantsToBeAMillionaire
         public static int fireproofAmountLevel = 2;
         List<int> summas = new List<int>() { 3_000_000, 1_500_000, 800_000, 400_000, 200_000, 100_000, 50_000, 25_000, 15_000, 10_000, 5_000, 3_000, 2_000, 1_000, 500 } ;
 
+        private WaveOutEvent outputDevice;
+        private AudioFileReader audioFile;
+        bool isStopped = false;
         public Form1()
         {
             InitializeComponent();
@@ -31,6 +35,21 @@ namespace WhoWantsToBeAMillionaire
             startGame();
             GetQuestion(level);
             CheckHelps();
+            string audioFilePath = @"../../audios/q1-5-bed-2008.mp3";
+
+            outputDevice = new WaveOutEvent();
+            audioFile = new AudioFileReader(audioFilePath);
+            outputDevice.Init(audioFile);
+            outputDevice.PlaybackStopped += OutputDevice_PlaybackStopped;
+        }
+
+        private void OutputDevice_PlaybackStopped(object sender, StoppedEventArgs e)
+        {
+            if (e.Exception == null && !isStopped) // Проверка на завершение воспроизведения без ошибок
+            {
+                audioFile.Position = 0; // Сброс позиции аудиофайла на начало
+                outputDevice.Play(); // Начать воспроизведение заново
+            }
         }
 
         public void CheckHelps()
@@ -79,8 +98,10 @@ namespace WhoWantsToBeAMillionaire
 
             cn.Open();
 
-            var cmd = new SQLiteCommand($@"select * from Questions", cn);
-            cmd.Parameters.AddWithValue("level", level);
+            var cmd = new SQLiteCommand($@"select * from Questions WHERE Level={level} 
+                                            order by Random()", cn);
+
+            cmd.Parameters.AddWithValue("Level", level);
 
             var dr = cmd.ExecuteReader();
 
@@ -100,7 +121,7 @@ namespace WhoWantsToBeAMillionaire
             if (level == 14)
                 FinishGame();
             Button[] btns = new Button[] { btnAnswerA, btnAnswerB,
-btnAnswerC, btnAnswerC };
+btnAnswerC, btnAnswerD };
 
             foreach (Button btn in btns)
                 btn.Enabled = true;
@@ -113,7 +134,35 @@ btnAnswerC, btnAnswerC };
 
         private void FinishGame()
         {
-            
+            //AddNote();
+            this.Hide();
+            isStopped = true;
+            outputDevice.Stop();
+            audioFile.Dispose();
+            outputDevice.Dispose();
+            GameOver gameOver = new GameOver();
+            gameOver.ShowDialog();
+            this.Close();
+        }
+
+        private void AddNote()
+        {
+            SQLiteConnection cn = new SQLiteConnection();
+            cn.ConnectionString = @"Data Source=../WhoWantsToBeAMillionaire.db;Version=3";
+
+            cn.Open();
+
+            var cmd = new SQLiteCommand($@"INSERT INTO [Players]
+                                                                ([username]
+                                                                ,[score])
+                                                            VALUES
+                                                                (@name
+                                                                ,@score);
+                                                    ", cn);
+            cmd.Parameters.AddWithValue("name", userName);
+            cmd.Parameters.AddWithValue("score", summas[summas.Count - level - 1]);
+            cmd.ExecuteNonQuery();
+            cn.Close();
         }
 
         private void startGame()
@@ -153,7 +202,7 @@ btnAnswerC, btnAnswerC };
         private void btnChangeQuestion_Click(object sender, EventArgs e)
         {
             btnChangeQuestion.Enabled = false;
-            Button[] btns = new Button[] { btnAnswerA, btnAnswerB, btnAnswerC, btnAnswerC };
+            Button[] btns = new Button[] { btnAnswerA, btnAnswerB, btnAnswerC, btnAnswerD };
 
             foreach (Button btn in btns)
                 btn.Enabled = true;
@@ -171,7 +220,14 @@ btnAnswerC, btnAnswerC };
         private void btnCallFriend_Click(object sender, EventArgs e)
         {
             btnCallFriend.Enabled = false;
+            isStopped = true;
+            outputDevice.Stop();
             CallFriend callFriend = new CallFriend();
+            callFriend.FormClosed += (s, args) =>
+            {
+                outputDevice.Play();
+                isStopped = false;
+            };
             callFriend.ShowDialog();
         }
 
@@ -294,6 +350,11 @@ btnAnswerC, btnAnswerC };
                     FinishGame();
                 }
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            outputDevice.Play();
         }
     }
 }

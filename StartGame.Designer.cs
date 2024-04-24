@@ -79,6 +79,7 @@
             this.Controls.Add(this.checkedListBox1);
             this.Name = "StartGame";
             this.Text = "StartGame";
+            this.Load += new System.EventHandler(this.StartGame_Load);
             this.ResumeLayout(false);
 
         }

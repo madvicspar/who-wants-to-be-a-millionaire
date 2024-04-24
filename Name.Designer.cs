@@ -72,6 +72,7 @@
             // 
             // Name
             // 
+            this.AcceptButton = this.button1;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(526, 157);
@@ -81,6 +82,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Name";
             this.Text = "Name";
+            this.Load += new System.EventHandler(this.Name_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

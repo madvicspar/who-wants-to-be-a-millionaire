@@ -127,6 +127,7 @@
             this.Controls.Add(this.maskedTextBox1);
             this.Name = "ChooseFriends";
             this.Text = "ChooseFriends";
+            this.Load += new System.EventHandler(this.ChooseFriends_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

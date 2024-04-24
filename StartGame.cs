@@ -21,7 +21,7 @@ namespace WhoWantsToBeAMillionaire
             InitializeComponent();
             MessageBox.Show("При выборе подсказки 'Звонок другу' вам будет нужно набрать номера телефонов 5 друзей. При активации подсказки будет необходимо по памяти набрать один из этих 5 номеров");
             StartPosition = FormStartPosition.CenterScreen;
-            string audioFilePath = @"../../audios/hello-new-punter-2008-long.mp3";
+            string audioFilePath = @"../../../audios/hello-new-punter-2008-long.mp3";
 
             outputDevice = new WaveOutEvent();
             audioFile = new AudioFileReader(audioFilePath);

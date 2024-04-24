@@ -11,4 +11,30 @@
     <VerifyUploadedFiles>false</VerifyUploadedFiles>
     <ProjectView>ProjectFiles</ProjectView>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="CallFriend.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ChooseFriends.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GameOver.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="HelpZal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Name.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="StartGame.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Sum.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
 </Project>

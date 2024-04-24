@@ -20,7 +20,7 @@ namespace WhoWantsToBeAMillionaire
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
-            string audioFilePath = @"../../audios/hello-new-punter-2008-long.mp3";
+            string audioFilePath = @"../../../audios/hello-new-punter-2008-long.mp3";
 
             outputDevice = new WaveOutEvent();
             audioFile = new AudioFileReader(audioFilePath);

@@ -17,7 +17,7 @@ namespace WhoWantsToBeAMillionaire
             StartPosition = FormStartPosition.CenterScreen;
             timer1.Interval = time;
             label2.Text = time.ToString();
-            string audioFilePath = @"../../audios/khsm_phone_countdown.mp3";
+            string audioFilePath = @"../../../audios/khsm_phone_countdown.mp3";
 
             outputDevice = new WaveOutEvent();
             audioFile = new AudioFileReader(audioFilePath);

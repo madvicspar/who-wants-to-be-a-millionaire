@@ -1,8 +1,6 @@
 ﻿using NAudio.Wave;
 using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.SQLite;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -35,7 +33,7 @@ namespace WhoWantsToBeAMillionaire
             startGame();
             GetQuestion(level);
             CheckHelps();
-            string audioFilePath = @"../../audios/q1-5-bed-2008.mp3";
+            string audioFilePath = @"../../../audios/q1-5-bed-2008.mp3";
 
             outputDevice = new WaveOutEvent();
             audioFile = new AudioFileReader(audioFilePath);
@@ -84,7 +82,7 @@ namespace WhoWantsToBeAMillionaire
 
         private void ShowQuestion(Question q)
         {
-            lblQuestion.Text = q.Text;
+            lblQuestion.Text = q.QuestionText;
             btnAnswerA.Text = "A. " + q.Answers[0];
             btnAnswerB.Text = "B. " + q.Answers[1];
             btnAnswerC.Text = "C. " + q.Answers[2];
@@ -93,24 +91,15 @@ namespace WhoWantsToBeAMillionaire
 
         private Question GetQuestion(int level)
         {
-            SQLiteConnection cn = new SQLiteConnection();
-            cn.ConnectionString = @"Data Source=../WhoWantsToBeAMillionaire.db;Version=3";
-
-            cn.Open();
-
-            var cmd = new SQLiteCommand($@"select * from Questions WHERE Level={level} 
-                                            order by Random()", cn);
-
-            cmd.Parameters.AddWithValue("Level", level);
-
-            var dr = cmd.ExecuteReader();
-
-            while (dr.Read())
+            using (var dbContext = new ApplicationDbContext())
             {
-                Question q = new Question(dr);
-                questions.Add(q);
+                var playersList = dbContext.Questions.Where(l => l.Level == level).ToList();
+                foreach (var question in playersList)
+                {
+                    question.Answers = new string[] { question.Answer1, question.Answer2, question.Answer3, question.Answer4 };
+                }
+                questions = playersList;
             }
-
             return questions[rnd.Next(0, questions.Count - 1)];
         }
 
@@ -134,7 +123,8 @@ btnAnswerC, btnAnswerD };
 
         private void FinishGame()
         {
-            //AddNote();
+            
+            AddNote();
             this.Hide();
             isStopped = true;
             outputDevice.Stop();
@@ -147,22 +137,11 @@ btnAnswerC, btnAnswerD };
 
         private void AddNote()
         {
-            SQLiteConnection cn = new SQLiteConnection();
-            cn.ConnectionString = @"Data Source=../WhoWantsToBeAMillionaire.db;Version=3";
-
-            cn.Open();
-
-            var cmd = new SQLiteCommand($@"INSERT INTO [Players]
-                                                                ([username]
-                                                                ,[score])
-                                                            VALUES
-                                                                (@name
-                                                                ,@score);
-                                                    ", cn);
-            cmd.Parameters.AddWithValue("name", userName);
-            cmd.Parameters.AddWithValue("score", summas[summas.Count - level - 1]);
-            cmd.ExecuteNonQuery();
-            cn.Close();
+            using (var dbContext = new ApplicationDbContext())
+            {
+                dbContext.Players.Add(new Player() { username=userName, score= summas[summas.Count - level - 1] } );
+                dbContext.SaveChanges();
+            }
         }
 
         private void startGame()

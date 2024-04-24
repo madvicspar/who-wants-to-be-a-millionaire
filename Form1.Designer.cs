@@ -29,197 +29,192 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.btnAnswerC = new System.Windows.Forms.Button();
-            this.btnAnswerD = new System.Windows.Forms.Button();
-            this.btnAnswerB = new System.Windows.Forms.Button();
-            this.btnAnswerA = new System.Windows.Forms.Button();
-            this.lblQuestion = new System.Windows.Forms.Label();
-            this.lstLevel = new System.Windows.Forms.ListBox();
-            this.btnFifty = new System.Windows.Forms.Button();
-            this.btnChangeQuestion = new System.Windows.Forms.Button();
-            this.btnCallFriend = new System.Windows.Forms.Button();
-            this.btnWrongRight = new System.Windows.Forms.Button();
-            this.btnHelpZal = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            btnAnswerC = new System.Windows.Forms.Button();
+            btnAnswerD = new System.Windows.Forms.Button();
+            btnAnswerB = new System.Windows.Forms.Button();
+            btnAnswerA = new System.Windows.Forms.Button();
+            lblQuestion = new System.Windows.Forms.Label();
+            lstLevel = new System.Windows.Forms.ListBox();
+            btnFifty = new System.Windows.Forms.Button();
+            btnChangeQuestion = new System.Windows.Forms.Button();
+            btnCallFriend = new System.Windows.Forms.Button();
+            btnWrongRight = new System.Windows.Forms.Button();
+            btnHelpZal = new System.Windows.Forms.Button();
+            SuspendLayout();
             // 
             // btnAnswerC
             // 
-            this.btnAnswerC.BackColor = System.Drawing.Color.Transparent;
-            this.btnAnswerC.FlatAppearance.BorderSize = 0;
-            this.btnAnswerC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAnswerC.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnAnswerC.ForeColor = System.Drawing.Color.White;
-            this.btnAnswerC.Location = new System.Drawing.Point(106, 713);
-            this.btnAnswerC.Name = "btnAnswerC";
-            this.btnAnswerC.Size = new System.Drawing.Size(452, 42);
-            this.btnAnswerC.TabIndex = 0;
-            this.btnAnswerC.Text = "button1";
-            this.btnAnswerC.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAnswerC.UseVisualStyleBackColor = false;
-            this.btnAnswerC.Click += new System.EventHandler(this.btnAnswerC_Click);
+            btnAnswerC.BackColor = System.Drawing.Color.Transparent;
+            btnAnswerC.FlatAppearance.BorderSize = 0;
+            btnAnswerC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnAnswerC.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 204);
+            btnAnswerC.ForeColor = System.Drawing.Color.White;
+            btnAnswerC.Location = new System.Drawing.Point(57, 766);
+            btnAnswerC.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnAnswerC.Name = "btnAnswerC";
+            btnAnswerC.Size = new System.Drawing.Size(452, 52);
+            btnAnswerC.TabIndex = 0;
+            btnAnswerC.Text = "button1";
+            btnAnswerC.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnAnswerC.UseVisualStyleBackColor = false;
+            btnAnswerC.Click += btnAnswerC_Click;
             // 
             // btnAnswerD
             // 
-            this.btnAnswerD.BackColor = System.Drawing.Color.Transparent;
-            this.btnAnswerD.FlatAppearance.BorderSize = 0;
-            this.btnAnswerD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAnswerD.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnAnswerD.ForeColor = System.Drawing.Color.White;
-            this.btnAnswerD.Location = new System.Drawing.Point(698, 713);
-            this.btnAnswerD.Name = "btnAnswerD";
-            this.btnAnswerD.Size = new System.Drawing.Size(452, 42);
-            this.btnAnswerD.TabIndex = 1;
-            this.btnAnswerD.Text = "button1";
-            this.btnAnswerD.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAnswerD.UseVisualStyleBackColor = false;
-            this.btnAnswerD.Click += new System.EventHandler(this.btnAnswerD_Click);
+            btnAnswerD.BackColor = System.Drawing.Color.Transparent;
+            btnAnswerD.FlatAppearance.BorderSize = 0;
+            btnAnswerD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnAnswerD.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 204);
+            btnAnswerD.ForeColor = System.Drawing.Color.White;
+            btnAnswerD.Location = new System.Drawing.Point(578, 766);
+            btnAnswerD.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnAnswerD.Name = "btnAnswerD";
+            btnAnswerD.Size = new System.Drawing.Size(452, 52);
+            btnAnswerD.TabIndex = 1;
+            btnAnswerD.Text = "button1";
+            btnAnswerD.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnAnswerD.UseVisualStyleBackColor = false;
+            btnAnswerD.Click += btnAnswerD_Click;
             // 
             // btnAnswerB
             // 
-            this.btnAnswerB.BackColor = System.Drawing.Color.Transparent;
-            this.btnAnswerB.FlatAppearance.BorderSize = 0;
-            this.btnAnswerB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAnswerB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnAnswerB.ForeColor = System.Drawing.Color.White;
-            this.btnAnswerB.Location = new System.Drawing.Point(698, 631);
-            this.btnAnswerB.Name = "btnAnswerB";
-            this.btnAnswerB.Size = new System.Drawing.Size(452, 42);
-            this.btnAnswerB.TabIndex = 2;
-            this.btnAnswerB.Text = "button1";
-            this.btnAnswerB.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAnswerB.UseVisualStyleBackColor = false;
-            this.btnAnswerB.Click += new System.EventHandler(this.btnAnswerB_Click);
+            btnAnswerB.BackColor = System.Drawing.Color.Transparent;
+            btnAnswerB.FlatAppearance.BorderSize = 0;
+            btnAnswerB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnAnswerB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 204);
+            btnAnswerB.ForeColor = System.Drawing.Color.White;
+            btnAnswerB.Location = new System.Drawing.Point(578, 677);
+            btnAnswerB.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnAnswerB.Name = "btnAnswerB";
+            btnAnswerB.Size = new System.Drawing.Size(452, 52);
+            btnAnswerB.TabIndex = 2;
+            btnAnswerB.Text = "button1";
+            btnAnswerB.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnAnswerB.UseVisualStyleBackColor = false;
+            btnAnswerB.Click += btnAnswerB_Click;
             // 
             // btnAnswerA
             // 
-            this.btnAnswerA.BackColor = System.Drawing.Color.Transparent;
-            this.btnAnswerA.FlatAppearance.BorderSize = 0;
-            this.btnAnswerA.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAnswerA.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnAnswerA.ForeColor = System.Drawing.Color.White;
-            this.btnAnswerA.Location = new System.Drawing.Point(106, 631);
-            this.btnAnswerA.Name = "btnAnswerA";
-            this.btnAnswerA.Size = new System.Drawing.Size(452, 42);
-            this.btnAnswerA.TabIndex = 3;
-            this.btnAnswerA.Text = "button1";
-            this.btnAnswerA.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAnswerA.UseVisualStyleBackColor = false;
-            this.btnAnswerA.Click += new System.EventHandler(this.btnAnswerA_Click);
+            btnAnswerA.BackColor = System.Drawing.Color.Transparent;
+            btnAnswerA.FlatAppearance.BorderSize = 0;
+            btnAnswerA.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnAnswerA.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 204);
+            btnAnswerA.ForeColor = System.Drawing.Color.White;
+            btnAnswerA.Location = new System.Drawing.Point(57, 677);
+            btnAnswerA.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnAnswerA.Name = "btnAnswerA";
+            btnAnswerA.Size = new System.Drawing.Size(452, 52);
+            btnAnswerA.TabIndex = 3;
+            btnAnswerA.Text = "button1";
+            btnAnswerA.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnAnswerA.UseVisualStyleBackColor = false;
+            btnAnswerA.Click += btnAnswerA_Click;
             // 
             // lblQuestion
             // 
-            this.lblQuestion.BackColor = System.Drawing.Color.Transparent;
-            this.lblQuestion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblQuestion.ForeColor = System.Drawing.Color.White;
-            this.lblQuestion.Location = new System.Drawing.Point(156, 503);
-            this.lblQuestion.Name = "lblQuestion";
-            this.lblQuestion.Size = new System.Drawing.Size(802, 61);
-            this.lblQuestion.TabIndex = 4;
-            this.lblQuestion.Text = "label1";
+            lblQuestion.BackColor = System.Drawing.Color.Transparent;
+            lblQuestion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            lblQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 204);
+            lblQuestion.ForeColor = System.Drawing.Color.White;
+            lblQuestion.Location = new System.Drawing.Point(86, 549);
+            lblQuestion.Name = "lblQuestion";
+            lblQuestion.Size = new System.Drawing.Size(802, 76);
+            lblQuestion.TabIndex = 4;
+            lblQuestion.Text = "label1";
             // 
             // lstLevel
             // 
-            this.lstLevel.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lstLevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lstLevel.FormattingEnabled = true;
-            this.lstLevel.ItemHeight = 29;
-            this.lstLevel.Items.AddRange(new object[] {
-            "3 000 000",
-            "1 500 000",
-            "800 000",
-            "400 000",
-            "200 000",
-            "100 000",
-            "50 000",
-            "25 000",
-            "15 000",
-            "10 000",
-            "5 000",
-            "3 000",
-            "2 000",
-            "1 000",
-            "500"});
-            this.lstLevel.Location = new System.Drawing.Point(1212, 12);
-            this.lstLevel.Name = "lstLevel";
-            this.lstLevel.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lstLevel.Size = new System.Drawing.Size(174, 464);
-            this.lstLevel.TabIndex = 5;
+            lstLevel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            lstLevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 204);
+            lstLevel.FormattingEnabled = true;
+            lstLevel.ItemHeight = 29;
+            lstLevel.Items.AddRange(new object[] { "3 000 000", "1 500 000", "800 000", "400 000", "200 000", "100 000", "50 000", "25 000", "15 000", "10 000", "5 000", "3 000", "2 000", "1 000", "500" });
+            lstLevel.Location = new System.Drawing.Point(1076, 13);
+            lstLevel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            lstLevel.Name = "lstLevel";
+            lstLevel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            lstLevel.Size = new System.Drawing.Size(174, 464);
+            lstLevel.TabIndex = 5;
             // 
             // btnFifty
             // 
-            this.btnFifty.Location = new System.Drawing.Point(1212, 482);
-            this.btnFifty.Name = "btnFifty";
-            this.btnFifty.Size = new System.Drawing.Size(117, 38);
-            this.btnFifty.TabIndex = 6;
-            this.btnFifty.Text = "50/50";
-            this.btnFifty.UseVisualStyleBackColor = true;
-            this.btnFifty.Click += new System.EventHandler(this.btnFifty_Click);
+            btnFifty.Location = new System.Drawing.Point(1076, 497);
+            btnFifty.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnFifty.Name = "btnFifty";
+            btnFifty.Size = new System.Drawing.Size(117, 48);
+            btnFifty.TabIndex = 6;
+            btnFifty.Text = "50/50";
+            btnFifty.UseVisualStyleBackColor = true;
+            btnFifty.Click += btnFifty_Click;
             // 
             // btnChangeQuestion
             // 
-            this.btnChangeQuestion.Location = new System.Drawing.Point(1212, 526);
-            this.btnChangeQuestion.Name = "btnChangeQuestion";
-            this.btnChangeQuestion.Size = new System.Drawing.Size(117, 46);
-            this.btnChangeQuestion.TabIndex = 7;
-            this.btnChangeQuestion.Text = "Замена вопроса";
-            this.btnChangeQuestion.UseVisualStyleBackColor = true;
-            this.btnChangeQuestion.Click += new System.EventHandler(this.btnChangeQuestion_Click);
+            btnChangeQuestion.Location = new System.Drawing.Point(1076, 553);
+            btnChangeQuestion.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnChangeQuestion.Name = "btnChangeQuestion";
+            btnChangeQuestion.Size = new System.Drawing.Size(117, 58);
+            btnChangeQuestion.TabIndex = 7;
+            btnChangeQuestion.Text = "Замена вопроса";
+            btnChangeQuestion.UseVisualStyleBackColor = true;
+            btnChangeQuestion.Click += btnChangeQuestion_Click;
             // 
             // btnCallFriend
             // 
-            this.btnCallFriend.Location = new System.Drawing.Point(1212, 683);
-            this.btnCallFriend.Name = "btnCallFriend";
-            this.btnCallFriend.Size = new System.Drawing.Size(117, 46);
-            this.btnCallFriend.TabIndex = 8;
-            this.btnCallFriend.Text = "Звонок другу";
-            this.btnCallFriend.UseVisualStyleBackColor = true;
-            this.btnCallFriend.Click += new System.EventHandler(this.btnCallFriend_Click);
+            btnCallFriend.Location = new System.Drawing.Point(1076, 750);
+            btnCallFriend.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnCallFriend.Name = "btnCallFriend";
+            btnCallFriend.Size = new System.Drawing.Size(117, 58);
+            btnCallFriend.TabIndex = 8;
+            btnCallFriend.Text = "Звонок другу";
+            btnCallFriend.UseVisualStyleBackColor = true;
+            btnCallFriend.Click += btnCallFriend_Click;
             // 
             // btnWrongRight
             // 
-            this.btnWrongRight.Location = new System.Drawing.Point(1212, 631);
-            this.btnWrongRight.Name = "btnWrongRight";
-            this.btnWrongRight.Size = new System.Drawing.Size(117, 46);
-            this.btnWrongRight.TabIndex = 9;
-            this.btnWrongRight.Text = "Право на ошибку";
-            this.btnWrongRight.UseVisualStyleBackColor = true;
-            this.btnWrongRight.Click += new System.EventHandler(this.btnWrongRight_Click);
+            btnWrongRight.Location = new System.Drawing.Point(1076, 684);
+            btnWrongRight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnWrongRight.Name = "btnWrongRight";
+            btnWrongRight.Size = new System.Drawing.Size(117, 58);
+            btnWrongRight.TabIndex = 9;
+            btnWrongRight.Text = "Право на ошибку";
+            btnWrongRight.UseVisualStyleBackColor = true;
+            btnWrongRight.Click += btnWrongRight_Click;
             // 
             // btnHelpZal
             // 
-            this.btnHelpZal.Location = new System.Drawing.Point(1212, 578);
-            this.btnHelpZal.Name = "btnHelpZal";
-            this.btnHelpZal.Size = new System.Drawing.Size(117, 46);
-            this.btnHelpZal.TabIndex = 10;
-            this.btnHelpZal.Text = "Помощь зала";
-            this.btnHelpZal.UseVisualStyleBackColor = true;
-            this.btnHelpZal.Click += new System.EventHandler(this.btnHelpZal_Click);
+            btnHelpZal.Location = new System.Drawing.Point(1076, 617);
+            btnHelpZal.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnHelpZal.Name = "btnHelpZal";
+            btnHelpZal.Size = new System.Drawing.Size(117, 58);
+            btnHelpZal.TabIndex = 10;
+            btnHelpZal.Text = "Помощь зала";
+            btnHelpZal.UseVisualStyleBackColor = true;
+            btnHelpZal.Click += btnHelpZal_Click;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(1389, 776);
-            this.Controls.Add(this.btnHelpZal);
-            this.Controls.Add(this.btnWrongRight);
-            this.Controls.Add(this.btnCallFriend);
-            this.Controls.Add(this.btnChangeQuestion);
-            this.Controls.Add(this.btnFifty);
-            this.Controls.Add(this.lstLevel);
-            this.Controls.Add(this.lblQuestion);
-            this.Controls.Add(this.btnAnswerA);
-            this.Controls.Add(this.btnAnswerB);
-            this.Controls.Add(this.btnAnswerD);
-            this.Controls.Add(this.btnAnswerC);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            BackColor = System.Drawing.Color.White;
+            BackgroundImage = (System.Drawing.Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            ClientSize = new System.Drawing.Size(1222, 970);
+            Controls.Add(btnHelpZal);
+            Controls.Add(btnWrongRight);
+            Controls.Add(btnCallFriend);
+            Controls.Add(btnChangeQuestion);
+            Controls.Add(btnFifty);
+            Controls.Add(lstLevel);
+            Controls.Add(lblQuestion);
+            Controls.Add(btnAnswerA);
+            Controls.Add(btnAnswerB);
+            Controls.Add(btnAnswerD);
+            Controls.Add(btnAnswerC);
+            Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            Name = "Form1";
+            Text = "Form1";
+            Load += Form1_Load;
+            ResumeLayout(false);
         }
 
         #endregion

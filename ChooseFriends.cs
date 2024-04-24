@@ -14,7 +14,7 @@ namespace WhoWantsToBeAMillionaire
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
-            string audioFilePath = @"../../audios/hello-new-punter-2008-long.mp3";
+            string audioFilePath = @"../../../audios/hello-new-punter-2008-long.mp3";
 
             outputDevice = new WaveOutEvent();
             audioFile = new AudioFileReader(audioFilePath);
@@ -35,14 +35,14 @@ namespace WhoWantsToBeAMillionaire
         {
             var textboxes = new MaskedTextBox[] { maskedTextBox1, maskedTextBox2, maskedTextBox3, maskedTextBox4, maskedTextBox5 };
 
-            //foreach (var textbox in textboxes)
-            //{
-            //    if (!textbox.MaskCompleted)
-            //    {
-            //        MessageBox.Show("Введите все номера телефонов полностью");
-            //        return;
-            //    }
-            //}
+            foreach (var textbox in textboxes)
+            {
+                if (!textbox.MaskCompleted)
+                {
+                    MessageBox.Show("Введите все номера телефонов полностью");
+                    return;
+                }
+            }
             List<string> friensNumbers = new List<string>();
             foreach (var textbox in textboxes)
             {

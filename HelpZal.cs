@@ -55,7 +55,7 @@ namespace WhoWantsToBeAMillionaire
                 chart1.Series[answers[i]].Points.AddY(probabilities[i]);
             }
 
-            label1.Text = currentQuestion.Text;
+            label1.Text = currentQuestion.QuestionText;
         }
     }
 }

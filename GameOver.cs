@@ -1,18 +1,7 @@
 ﻿using NAudio.Wave;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SQLite;
-using System.Drawing;
 using System.Linq;
-using System.Media;
-using System.Net.NetworkInformation;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using WMPLib;
 
 namespace WhoWantsToBeAMillionaire
 {
@@ -24,8 +13,7 @@ namespace WhoWantsToBeAMillionaire
         {
             InitializeComponent();
             LoadData();
-            string audioFilePath = @"../../audios/goodbye-old-punter-2008.mp3";
-
+            string audioFilePath = @"../../../audios/goodbye-old-punter-2008.mp3";
             outputDevice = new WaveOutEvent();
             audioFile = new AudioFileReader(audioFilePath);
             outputDevice.Init(audioFile);
@@ -43,17 +31,11 @@ namespace WhoWantsToBeAMillionaire
 
         public void LoadData()
         {
-            SQLiteConnection cn = new SQLiteConnection();
-            cn.ConnectionString = @"Data Source=../WhoWantsToBeAMillionaire.db;Version=3";
-
-            cn.Open();
-
-            var cmd = new SQLiteCommand($@"SELECT username, score FROM Players ORDER BY score DESC LIMIT 10", cn);
-
-            var dt = new DataTable();
-            dt.Load(cmd.ExecuteReader());
-
-            dataGridView1.DataSource = dt;
+            using (var dbContext = new ApplicationDbContext())
+            {
+                var playersList = dbContext.Players.ToList();
+                dataGridView1.DataSource = playersList;
+            }
         }
 
         private void GameOver_Load(object sender, EventArgs e)

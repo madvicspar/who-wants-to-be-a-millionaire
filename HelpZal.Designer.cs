@@ -71,7 +71,9 @@
             Controls.Add(label1);
             Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             Name = "HelpZal";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "HelpZal";
+            TopMost = true;
             ((System.ComponentModel.ISupportInitialize)chart1).EndInit();
             ResumeLayout(false);
         }

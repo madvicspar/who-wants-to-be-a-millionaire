@@ -38,7 +38,9 @@ namespace WhoWantsToBeAMillionaire
         {
             if (Form1.friensNumbers.Contains(maskedTextBox1.Text))
             {
-                MessageBox.Show("Я думаю, что правильный ответ - ", Form1.currentQuestion.Answers[rnd.Next(0, 3)]);
+                MessageBox.Show("Я думаю, что правильный ответ - " + Form1.currentQuestion.Answers[rnd.Next(0, 3)]);
+                timer1.Stop();
+                button1.Enabled = false;
             }
             else
             {
@@ -48,10 +50,9 @@ namespace WhoWantsToBeAMillionaire
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            time--;
             label2.Text = time.ToString();
 
-            if (time < 0)
+            if (time == 0)
             {
                 timer1.Stop(); // Останавливаем таймер, если время истекло
 
@@ -64,6 +65,8 @@ namespace WhoWantsToBeAMillionaire
                     MessageBox.Show("Время вышло, абонент не ответил");
                 }
             }
+
+            time--;
         }
 
         private void CallFriend_Load(object sender, EventArgs e)
@@ -73,6 +76,7 @@ namespace WhoWantsToBeAMillionaire
 
         private void CallFriend_FormClosing(object sender, FormClosingEventArgs e)
         {
+            timer1.Stop();
             isStopped = true;
             outputDevice.Stop();
             audioFile.Dispose();

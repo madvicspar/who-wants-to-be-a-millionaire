@@ -93,7 +93,7 @@ namespace WhoWantsToBeAMillionaire
         {
             using (var dbContext = new ApplicationDbContext())
             {
-                var playersList = dbContext.Questions.Where(l => l.Level == level).ToList();
+                var playersList = dbContext.Questions.ToList();
                 foreach (var question in playersList)
                 {
                     question.Answers = new string[] { question.Answer1, question.Answer2, question.Answer3, question.Answer4 };
@@ -123,7 +123,6 @@ btnAnswerC, btnAnswerD };
 
         private void FinishGame()
         {
-            
             AddNote();
             this.Hide();
             isStopped = true;
@@ -139,7 +138,10 @@ btnAnswerC, btnAnswerD };
         {
             using (var dbContext = new ApplicationDbContext())
             {
-                dbContext.Players.Add(new Player() { username=userName, score= summas[summas.Count - level - 1] } );
+                if (level != 0)
+                    dbContext.Players.Add(new Player() { username = userName, score = summas[summas.Count - level - 1] } );
+                else
+                    dbContext.Players.Add(new Player() { username = userName, score = 0 });
                 dbContext.SaveChanges();
             }
         }
@@ -221,12 +223,12 @@ btnAnswerC, btnAnswerD };
 
         private void btnAnswerA_Click(object sender, EventArgs e)
         {
-            if (isMayBeWrong)
-            {
-                isMayBeWrong = false;
-            }
             if (currentQuestion.RightAnswer == 1)
             {
+                if (isMayBeWrong)
+                {
+                    isMayBeWrong = false;
+                }
                 NextStep();
                 return;
             }
@@ -234,12 +236,16 @@ btnAnswerC, btnAnswerD };
             {
                 if (isMayBeWrong)
                 {
+                    isMayBeWrong = false;
                     btnAnswerA.Enabled = false;
                 }
                 else
                 {
                     if (level >= fireproofAmountLevel)
-                        level = fireproofAmountLevel;
+                    {
+                        if (level != 14)
+                            level = fireproofAmountLevel;
+                    }
                     else
                         level = 0;
                     FinishGame();
@@ -249,12 +255,12 @@ btnAnswerC, btnAnswerD };
 
         private void btnAnswerB_Click(object sender, EventArgs e)
         {
-            if (isMayBeWrong)
-            {
-                isMayBeWrong = false;
-            }
             if (currentQuestion.RightAnswer == 2)
             {
+                if (isMayBeWrong)
+                {
+                    isMayBeWrong = false;
+                }
                 NextStep();
                 return;
             }
@@ -263,11 +269,15 @@ btnAnswerC, btnAnswerD };
                 if (isMayBeWrong)
                 {
                     btnAnswerB.Enabled = false;
+                    isMayBeWrong = false;
                 }
                 else
                 {
                     if (level >= fireproofAmountLevel)
-                        level = fireproofAmountLevel;
+                    {
+                        if (level != 14)
+                            level = fireproofAmountLevel;
+                    }
                     else
                         level = 0;
                     FinishGame();
@@ -277,12 +287,12 @@ btnAnswerC, btnAnswerD };
 
         private void btnAnswerC_Click(object sender, EventArgs e)
         {
-            if (isMayBeWrong)
-            {
-                isMayBeWrong = false;
-            }
             if (currentQuestion.RightAnswer == 3)
             {
+                if (isMayBeWrong)
+                {
+                    isMayBeWrong = false;
+                }
                 NextStep();
                 return;
             }
@@ -290,12 +300,16 @@ btnAnswerC, btnAnswerD };
             {
                 if (isMayBeWrong)
                 {
+                    isMayBeWrong = false;
                     btnAnswerC.Enabled = false;
                 }
                 else
                 {
                     if (level >= fireproofAmountLevel)
-                        level = fireproofAmountLevel;
+                    {
+                        if (level != 14)
+                            level = fireproofAmountLevel;
+                    }
                     else
                         level = 0;
                     FinishGame();
@@ -305,12 +319,12 @@ btnAnswerC, btnAnswerD };
 
         private void btnAnswerD_Click(object sender, EventArgs e)
         {
-            if (isMayBeWrong)
-            {
-                isMayBeWrong = false;
-            }
             if (currentQuestion.RightAnswer == 4)
             {
+                if (isMayBeWrong)
+                {
+                    isMayBeWrong = false;
+                }
                 NextStep();
                 return;
             }
@@ -318,12 +332,16 @@ btnAnswerC, btnAnswerD };
             {
                 if (isMayBeWrong)
                 {
+                    isMayBeWrong = false;
                     btnAnswerD.Enabled = false;
                 }
                 else
                 {
                     if (level >= fireproofAmountLevel)
-                        level = fireproofAmountLevel;
+                    {
+                        if (level != 14)
+                            level = fireproofAmountLevel;
+                    }
                     else
                         level = 0;
                     FinishGame();

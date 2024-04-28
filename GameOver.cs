@@ -13,10 +13,12 @@ namespace WhoWantsToBeAMillionaire
         {
             InitializeComponent();
             LoadData();
+            StartPosition = FormStartPosition.CenterScreen;
             string audioFilePath = @"../../../audios/goodbye-old-punter-2008.mp3";
             outputDevice = new WaveOutEvent();
             audioFile = new AudioFileReader(audioFilePath);
             outputDevice.Init(audioFile);
+            outputDevice.Volume = 0.01f;
             outputDevice.PlaybackStopped += OutputDevice_PlaybackStopped;
         }
 
@@ -33,8 +35,9 @@ namespace WhoWantsToBeAMillionaire
         {
             using (var dbContext = new ApplicationDbContext())
             {
-                var playersList = dbContext.Players.ToList();
+                var playersList = dbContext.Players.OrderByDescending(x => x.score).Take(10).ToList();
                 dataGridView1.DataSource = playersList;
+                dataGridView1.Columns[0].Visible = false;
             }
         }
 

@@ -19,6 +19,7 @@ namespace WhoWantsToBeAMillionaire
             outputDevice = new WaveOutEvent();
             audioFile = new AudioFileReader(audioFilePath);
             outputDevice.Init(audioFile);
+            outputDevice.Volume = 0.01f;
             outputDevice.PlaybackStopped += OutputDevice_PlaybackStopped;
         }
 

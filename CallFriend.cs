@@ -22,6 +22,7 @@ namespace WhoWantsToBeAMillionaire
             outputDevice = new WaveOutEvent();
             audioFile = new AudioFileReader(audioFilePath);
             outputDevice.Init(audioFile);
+            outputDevice.Volume = 0.03f;
             outputDevice.PlaybackStopped += OutputDevice_PlaybackStopped;
         }
 
@@ -44,25 +45,28 @@ namespace WhoWantsToBeAMillionaire
             }
             else
             {
-                MessageBox.Show("Абонент не отвечает");
+                MessageBox.Show("Неправильно введен номер.");
             }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            label2.Text = time.ToString();
+            label2.Text = time.ToString() + " сек.";
 
             if (time == 0)
             {
                 timer1.Stop(); // Останавливаем таймер, если время истекло
 
+                maskedTextBox1.Enabled = false;
+                button1.Enabled = false;
+
                 if (Form1.friensNumbers.Contains(maskedTextBox1.Text))
                 {
-                    MessageBox.Show("Я думаю, что правильный ответ - " + Form1.currentQuestion.Answers[rnd.Next(0, 3)]);
+                    MessageBox.Show("Мне кажется, что ответ - " + Form1.currentQuestion.Answers[rnd.Next(0, 3)]);
                 }
                 else
                 {
-                    MessageBox.Show("Время вышло, абонент не ответил");
+                    MessageBox.Show("Время вышло, вы не успели правильно набрать номер.");
                 }
             }
 

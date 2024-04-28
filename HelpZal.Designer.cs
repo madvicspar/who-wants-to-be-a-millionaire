@@ -39,9 +39,9 @@
             // label1
             // 
             label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 204);
-            label1.Location = new System.Drawing.Point(38, 11);
+            label1.Location = new System.Drawing.Point(2, 0);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(706, 65);
+            label1.Size = new System.Drawing.Size(550, 90);
             label1.TabIndex = 1;
             label1.Text = "label1";
             label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -52,13 +52,13 @@
             chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             chart1.Legends.Add(legend1);
-            chart1.Location = new System.Drawing.Point(12, 78);
+            chart1.Location = new System.Drawing.Point(2, 93);
             chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             chart1.Series.Add(series1);
-            chart1.Size = new System.Drawing.Size(771, 300);
+            chart1.Size = new System.Drawing.Size(550, 234);
             chart1.TabIndex = 0;
             chart1.Text = "chart1";
             // 
@@ -66,13 +66,13 @@
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(800, 481);
+            ClientSize = new System.Drawing.Size(553, 330);
             Controls.Add(chart1);
             Controls.Add(label1);
             Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             Name = "HelpZal";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            Text = "HelpZal";
+            Text = "Кто хочет стать миллионером?";
             TopMost = true;
             ((System.ComponentModel.ISupportInitialize)chart1).EndInit();
             ResumeLayout(false);

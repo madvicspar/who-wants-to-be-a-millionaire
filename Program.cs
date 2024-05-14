@@ -16,7 +16,7 @@ namespace WhoWantsToBeAMillionaire
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Name());
+            Application.Run(new StartGame());
         }
     }
 }

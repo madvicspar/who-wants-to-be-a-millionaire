@@ -28,71 +28,73 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.label1 = new System.Windows.Forms.Label();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.label2 = new System.Windows.Forms.Label();
-            this.SuspendLayout();
+            components = new System.ComponentModel.Container();
+            label1 = new System.Windows.Forms.Label();
+            maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            button1 = new System.Windows.Forms.Button();
+            timer1 = new System.Windows.Forms.Timer(components);
+            label2 = new System.Windows.Forms.Label();
+            SuspendLayout();
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(48, 35);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(318, 23);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Введите номер друга за ограниченное время";
+            label1.Location = new System.Drawing.Point(48, 44);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(284, 29);
+            label1.TabIndex = 1;
+            label1.Text = "Введите правильный номер. Осталось:";
             // 
             // maskedTextBox1
             // 
-            this.maskedTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.maskedTextBox1.Location = new System.Drawing.Point(51, 61);
-            this.maskedTextBox1.Mask = "+7 (000) 000-00-00";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(175, 27);
-            this.maskedTextBox1.TabIndex = 2;
+            maskedTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 204);
+            maskedTextBox1.Location = new System.Drawing.Point(51, 76);
+            maskedTextBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            maskedTextBox1.Mask = "+7 (000) 000-00-00";
+            maskedTextBox1.Name = "maskedTextBox1";
+            maskedTextBox1.Size = new System.Drawing.Size(352, 27);
+            maskedTextBox1.TabIndex = 2;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(51, 94);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(175, 25);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Готово";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            button1.Location = new System.Drawing.Point(51, 118);
+            button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            button1.Name = "button1";
+            button1.Size = new System.Drawing.Size(352, 31);
+            button1.TabIndex = 3;
+            button1.Text = "Готово";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // timer1
             // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 1;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            timer1.Enabled = true;
+            timer1.Interval = 1;
+            timer1.Tick += timer1_Tick;
             // 
             // label2
             // 
-            this.label2.BackColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(251, 61);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(115, 58);
-            this.label2.TabIndex = 4;
+            label2.BackColor = System.Drawing.Color.White;
+            label2.Location = new System.Drawing.Point(338, 44);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(65, 29);
+            label2.TabIndex = 4;
             // 
             // CallFriend
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(394, 141);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.maskedTextBox1);
-            this.Controls.Add(this.label1);
-            this.Name = "CallFriend";
-            this.Text = "CallFriend";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CallFriend_FormClosing);
-            this.Load += new System.EventHandler(this.CallFriend_Load);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(451, 176);
+            Controls.Add(label2);
+            Controls.Add(button1);
+            Controls.Add(maskedTextBox1);
+            Controls.Add(label1);
+            Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            Name = "CallFriend";
+            Text = "Кто хочет стать миллионером?";
+            FormClosing += CallFriend_FormClosing;
+            Load += CallFriend_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

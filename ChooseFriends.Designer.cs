@@ -28,109 +28,104 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox3 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox4 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox5 = new System.Windows.Forms.MaskedTextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.SuspendLayout();
+            maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
+            maskedTextBox3 = new System.Windows.Forms.MaskedTextBox();
+            maskedTextBox4 = new System.Windows.Forms.MaskedTextBox();
+            maskedTextBox5 = new System.Windows.Forms.MaskedTextBox();
+            button1 = new System.Windows.Forms.Button();
+            label1 = new System.Windows.Forms.Label();
+            SuspendLayout();
             // 
             // maskedTextBox1
             // 
-            this.maskedTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.maskedTextBox1.Location = new System.Drawing.Point(26, 57);
-            this.maskedTextBox1.Mask = "+7 (000) 000-00-00";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(180, 27);
-            this.maskedTextBox1.TabIndex = 0;
+            maskedTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 204);
+            maskedTextBox1.Location = new System.Drawing.Point(46, 44);
+            maskedTextBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            maskedTextBox1.Mask = "+7 (000) 000-00-00";
+            maskedTextBox1.Name = "maskedTextBox1";
+            maskedTextBox1.Size = new System.Drawing.Size(297, 27);
+            maskedTextBox1.TabIndex = 0;
             // 
             // maskedTextBox2
             // 
-            this.maskedTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.maskedTextBox2.Location = new System.Drawing.Point(26, 189);
-            this.maskedTextBox2.Mask = "+7 (000) 000-00-00";
-            this.maskedTextBox2.Name = "maskedTextBox2";
-            this.maskedTextBox2.Size = new System.Drawing.Size(180, 27);
-            this.maskedTextBox2.TabIndex = 4;
+            maskedTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 204);
+            maskedTextBox2.Location = new System.Drawing.Point(46, 209);
+            maskedTextBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            maskedTextBox2.Mask = "+7 (000) 000-00-00";
+            maskedTextBox2.Name = "maskedTextBox2";
+            maskedTextBox2.Size = new System.Drawing.Size(297, 27);
+            maskedTextBox2.TabIndex = 4;
             // 
             // maskedTextBox3
             // 
-            this.maskedTextBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.maskedTextBox3.Location = new System.Drawing.Point(26, 156);
-            this.maskedTextBox3.Mask = "+7 (000) 000-00-00";
-            this.maskedTextBox3.Name = "maskedTextBox3";
-            this.maskedTextBox3.Size = new System.Drawing.Size(180, 27);
-            this.maskedTextBox3.TabIndex = 3;
+            maskedTextBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 204);
+            maskedTextBox3.Location = new System.Drawing.Point(46, 168);
+            maskedTextBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            maskedTextBox3.Mask = "+7 (000) 000-00-00";
+            maskedTextBox3.Name = "maskedTextBox3";
+            maskedTextBox3.Size = new System.Drawing.Size(297, 27);
+            maskedTextBox3.TabIndex = 3;
             // 
             // maskedTextBox4
             // 
-            this.maskedTextBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.maskedTextBox4.Location = new System.Drawing.Point(26, 123);
-            this.maskedTextBox4.Mask = "+7 (000) 000-00-00";
-            this.maskedTextBox4.Name = "maskedTextBox4";
-            this.maskedTextBox4.Size = new System.Drawing.Size(180, 27);
-            this.maskedTextBox4.TabIndex = 2;
+            maskedTextBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 204);
+            maskedTextBox4.Location = new System.Drawing.Point(46, 127);
+            maskedTextBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            maskedTextBox4.Mask = "+7 (000) 000-00-00";
+            maskedTextBox4.Name = "maskedTextBox4";
+            maskedTextBox4.Size = new System.Drawing.Size(297, 27);
+            maskedTextBox4.TabIndex = 2;
             // 
             // maskedTextBox5
             // 
-            this.maskedTextBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.maskedTextBox5.Location = new System.Drawing.Point(26, 90);
-            this.maskedTextBox5.Mask = "+7 (000) 000-00-00";
-            this.maskedTextBox5.Name = "maskedTextBox5";
-            this.maskedTextBox5.Size = new System.Drawing.Size(180, 27);
-            this.maskedTextBox5.TabIndex = 1;
+            maskedTextBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 204);
+            maskedTextBox5.Location = new System.Drawing.Point(46, 85);
+            maskedTextBox5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            maskedTextBox5.Mask = "+7 (000) 000-00-00";
+            maskedTextBox5.Name = "maskedTextBox5";
+            maskedTextBox5.Size = new System.Drawing.Size(297, 27);
+            maskedTextBox5.TabIndex = 1;
             // 
             // button1
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(26, 222);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(180, 36);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Готово";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 204);
+            button1.Location = new System.Drawing.Point(46, 251);
+            button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            button1.Name = "button1";
+            button1.Size = new System.Drawing.Size(297, 45);
+            button1.TabIndex = 5;
+            button1.Text = "Готово";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // label1
             // 
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(21, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(215, 23);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Введите номера друзей";
-            // 
-            // label2
-            // 
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(21, 32);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(329, 23);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Вам придется набирать по памяти!";
+            label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 204);
+            label1.Location = new System.Drawing.Point(41, 11);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(215, 29);
+            label1.TabIndex = 6;
+            label1.Text = "Введите номера друзей";
             // 
             // ChooseFriends
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(334, 267);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.maskedTextBox5);
-            this.Controls.Add(this.maskedTextBox4);
-            this.Controls.Add(this.maskedTextBox3);
-            this.Controls.Add(this.maskedTextBox2);
-            this.Controls.Add(this.maskedTextBox1);
-            this.Name = "ChooseFriends";
-            this.Text = "ChooseFriends";
-            this.Load += new System.EventHandler(this.ChooseFriends_Load);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(387, 311);
+            Controls.Add(label1);
+            Controls.Add(button1);
+            Controls.Add(maskedTextBox5);
+            Controls.Add(maskedTextBox4);
+            Controls.Add(maskedTextBox3);
+            Controls.Add(maskedTextBox2);
+            Controls.Add(maskedTextBox1);
+            Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            Name = "ChooseFriends";
+            Text = "Кто хочет стать миллионером?";
+            Load += ChooseFriends_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -142,6 +137,5 @@
         private System.Windows.Forms.MaskedTextBox maskedTextBox5;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
     }
 }

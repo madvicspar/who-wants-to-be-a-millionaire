@@ -27,13 +27,7 @@
     <Compile Update="HelpZal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Name.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="StartGame.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Sum.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

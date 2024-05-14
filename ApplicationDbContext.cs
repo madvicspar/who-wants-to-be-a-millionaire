@@ -1,11 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Configuration;
 
 namespace WhoWantsToBeAMillionaire
 {
     public class ApplicationDbContext : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlite("Data Source=D:\\vikto\\source\\repos\\WhoWantsToBeAMillionaire\\WhoWantsToBeAMillionaire.db");
+        => optionsBuilder.UseSqlite($"Data Source={ConfigurationManager.ConnectionStrings["Default"].ConnectionString}");
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

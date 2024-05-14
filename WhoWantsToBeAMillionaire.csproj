@@ -52,20 +52,11 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.4" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="8.0.4">
+      <TreatAsUsed>true</TreatAsUsed>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.Core" Version="8.0.4" />
     <PackageReference Include="NAudio" Version="2.2.1" />
-    <PackageReference Include="NAudio.Asio" Version="2.2.1" />
-    <PackageReference Include="NAudio.Core" Version="2.2.1" />
-    <PackageReference Include="NAudio.Midi" Version="2.2.1" />
-    <PackageReference Include="NAudio.Wasapi" Version="2.2.1" />
-    <PackageReference Include="NAudio.WinForms" Version="2.2.1" />
-    <PackageReference Include="NAudio.WinMM" Version="2.2.1" />
-    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
-    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
-    <PackageReference Include="System.Data.SQLite" Version="1.0.118" />
-    <PackageReference Include="System.Security.AccessControl" Version="6.0.0" />
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="8.0.0" />
     <PackageReference Include="WinForms.DataVisualization" Version="1.9.2" />
   </ItemGroup>
 </Project>

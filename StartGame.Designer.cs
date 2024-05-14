@@ -75,6 +75,7 @@
             cmbxSums.Location = new System.Drawing.Point(45, 314);
             cmbxSums.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             cmbxSums.Name = "cmbxSums";
+            cmbxSums.SelectedIndex = 0;
             cmbxSums.Size = new System.Drawing.Size(308, 28);
             cmbxSums.TabIndex = 9;
             // 
@@ -120,8 +121,8 @@
             Controls.Add(chbxHelps);
             Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             Name = "StartGame";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "Кто хочет стать миллионером?";
-            Load += StartGame_Load;
             ResumeLayout(false);
             PerformLayout();
         }

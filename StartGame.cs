@@ -9,12 +9,10 @@ namespace WhoWantsToBeAMillionaire
     {
         private WaveOutEvent outputDevice;
         private AudioFileReader audioFile;
-        bool isStopped = false;
+        private bool IsStopped = false;
         public StartGame()
         {
             InitializeComponent();
-            cmbxSums.SelectedIndex = 0;
-            StartPosition = FormStartPosition.CenterScreen;
             string audioFilePath = @"../../../audios/hello-new-punter-2008-long.mp3";
 
             outputDevice = new WaveOutEvent();
@@ -22,11 +20,12 @@ namespace WhoWantsToBeAMillionaire
             outputDevice.Init(audioFile);
             outputDevice.Volume = 0.01f;
             outputDevice.PlaybackStopped += start_OutputDevice_PlaybackStopped;
+            outputDevice.Play();
         }
 
         private void start_OutputDevice_PlaybackStopped(object sender, StoppedEventArgs e)
         {
-            if (e.Exception == null && !isStopped) // Проверка на завершение воспроизведения без ошибок
+            if (e.Exception == null && !IsStopped) // Проверка на завершение воспроизведения без ошибок
             {
                 audioFile.Position = 0; // Сброс позиции аудиофайла на начало
                 outputDevice.Play(); // Начать воспроизведение заново
@@ -47,11 +46,6 @@ namespace WhoWantsToBeAMillionaire
             }
         }
 
-        private void StartGame_Load(object sender, EventArgs e)
-        {
-            outputDevice.Play();
-        }
-
         private void btnApply_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(txtbxName.Text))
@@ -60,48 +54,59 @@ namespace WhoWantsToBeAMillionaire
                 Form1.fireproofAmountLevel = cmbxSums.Items.Count - cmbxSums.SelectedIndex - 1;
                 if (chbxHelps.CheckedItems.Count == 3)
                 {
-                    List<Helps> helps = new List<Helps>();
-                    foreach (var help in chbxHelps.CheckedIndices)
-                    {
-                        var help_index = (int)help;
-                        switch (help_index)
-                        {
-                            case 0:
-                                helps.Add(Helps.fifty);
-                                break;
-                            case 1:
-                                helps.Add(Helps.changeQuestion);
-                                break;
-                            case 2:
-                                helps.Add(Helps.callFriend);
-                                break;
-                            case 3:
-                                helps.Add(Helps.helpZal);
-                                break;
-                            case 4:
-                                helps.Add(Helps.mayBeWrong);
-                                break;
-                        }
-                    }
-                    if (helps.Contains(Helps.callFriend))
-                    {
-                        Form1.helps = helps;
-                        ChooseFriends chooseFriends = new ChooseFriends();
-                        chooseFriends.ShowDialog();
-                    }
-                    else
-                    {
-                        Form1.helps = helps;
-                        Form1 chooseFriends = new Form1();
-                        chooseFriends.ShowDialog();
-                    }
-                    this.Close();
+                    ContinueGame();
                 }
                 else
                     MessageBox.Show("Нужно выбрать 3 подсказки");
             }
             else
                 MessageBox.Show("Введите имя пользователя");
+        }
+
+        public List<Helps> GetHelps()
+        {
+            List<Helps> helps = new List<Helps>();
+            foreach (var help in chbxHelps.CheckedIndices)
+            {
+                var help_index = (int)help;
+                switch (help_index)
+                {
+                    case 0:
+                        helps.Add(Helps.fifty);
+                        break;
+                    case 1:
+                        helps.Add(Helps.changeQuestion);
+                        break;
+                    case 2:
+                        helps.Add(Helps.callFriend);
+                        break;
+                    case 3:
+                        helps.Add(Helps.helpZal);
+                        break;
+                    case 4:
+                        helps.Add(Helps.mayBeWrong);
+                        break;
+                }
+            }
+            return helps;
+        }
+
+        public void ContinueGame()
+        {
+            List<Helps> helps = GetHelps();
+            if (helps.Contains(Helps.callFriend))
+            {
+                Form1.helps = helps;
+                ChooseFriends chooseFriends = new ChooseFriends();
+                chooseFriends.ShowDialog();
+            }
+            else
+            {
+                Form1.helps = helps;
+                Form1 chooseFriends = new Form1();
+                chooseFriends.ShowDialog();
+            }
+            this.Close();
         }
     }
 }

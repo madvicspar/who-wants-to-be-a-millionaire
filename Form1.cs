@@ -15,22 +15,21 @@ namespace WhoWantsToBeAMillionaire
         public static string userName;
         public static List<Helps> helps = new List<Helps>();
         public static List<string> friensNumbers = new List<string>();
-        List<Question> questions = new List<Question>();
+        private List<Question> questions = new List<Question>();
         private Random rnd = new Random();
-        int level = 0;
+        private int level = 0;
         public static Question currentQuestion;
-        bool isMayBeWrong = false;
+        private bool isMayBeWrong = false;
         public static int fireproofAmountLevel = 2;
-        List<int> summas = new List<int>() { 3_000_000, 1_500_000, 800_000, 400_000, 200_000, 100_000, 50_000, 25_000, 15_000, 10_000, 5_000, 3_000, 2_000, 1_000, 500 } ;
+        private List<int> summas = new List<int>() { 3_000_000, 1_500_000, 800_000, 400_000, 200_000, 100_000, 50_000, 25_000, 15_000, 10_000, 5_000, 3_000, 2_000, 1_000, 500 };
 
         private WaveOutEvent outputDevice;
         private AudioFileReader audioFile;
-        bool isStopped = false;
+        private bool isStopped = false;
         public Form1()
         {
             InitializeComponent();
-            StartPosition = FormStartPosition.CenterScreen;
-            startGame();
+            StartGame();
             GetQuestion(level);
             CheckHelps();
             string audioFilePath = @"../../../audios/q1-5-bed-2008.mp3";
@@ -40,6 +39,7 @@ namespace WhoWantsToBeAMillionaire
             outputDevice.Init(audioFile);
             outputDevice.Volume = 0.01f;
             outputDevice.PlaybackStopped += OutputDevice_PlaybackStopped;
+            outputDevice.Play();
         }
 
         private void OutputDevice_PlaybackStopped(object sender, StoppedEventArgs e)
@@ -53,11 +53,6 @@ namespace WhoWantsToBeAMillionaire
 
         public void CheckHelps()
         {
-            btnFifty.Enabled = false;
-            btnChangeQuestion.Enabled = false;
-            btnCallFriend.Enabled = false;
-            btnHelpZal.Enabled = false;
-            btnWrongRight.Enabled = false;
             foreach (var help in helps)
             {
                 switch (help)
@@ -65,7 +60,7 @@ namespace WhoWantsToBeAMillionaire
                     case Helps.fifty:
                         btnFifty.Enabled = true;
                         break;
-                    case Helps.changeQuestion: 
+                    case Helps.changeQuestion:
                         btnChangeQuestion.Enabled = true;
                         break;
                     case Helps.callFriend:
@@ -101,7 +96,7 @@ namespace WhoWantsToBeAMillionaire
                 }
                 questions = playersList;
             }
-            return questions[rnd.Next(0, questions.Count - 1)];
+            return questions[rnd.Next(0, questions.Count)];
         }
 
 
@@ -110,8 +105,7 @@ namespace WhoWantsToBeAMillionaire
         {
             if (level == 14)
                 FinishGame();
-            Button[] btns = new Button[] { btnAnswerA, btnAnswerB,
-btnAnswerC, btnAnswerD };
+            Button[] btns = [btnAnswerA, btnAnswerB, btnAnswerC, btnAnswerD];
 
             foreach (Button btn in btns)
                 btn.Enabled = true;
@@ -125,14 +119,14 @@ btnAnswerC, btnAnswerD };
         private void FinishGame()
         {
             AddNote();
-            this.Hide();
+            Hide();
             isStopped = true;
             outputDevice.Stop();
             audioFile.Dispose();
             outputDevice.Dispose();
             GameOver gameOver = new GameOver();
             gameOver.ShowDialog();
-            this.Close();
+            Close();
         }
 
         private void AddNote()
@@ -140,14 +134,14 @@ btnAnswerC, btnAnswerD };
             using (var dbContext = new ApplicationDbContext())
             {
                 if (level != 0)
-                    dbContext.Players.Add(new Player() { username = userName, score = summas[summas.Count - level - 1] } );
+                    dbContext.Players.Add(new Player() { username = userName, score = summas[summas.Count - level - 1] });
                 else
                     dbContext.Players.Add(new Player() { username = userName, score = 0 });
                 dbContext.SaveChanges();
             }
         }
 
-        private void startGame()
+        private void StartGame()
         {
             level = 0;
             NextStep();
@@ -158,7 +152,7 @@ btnAnswerC, btnAnswerD };
             btnFifty.Enabled = false;
 
             // Получаем все кнопки с вариантами ответов
-            Button[] btns = new Button[] { btnAnswerA, btnAnswerB, btnAnswerC, btnAnswerD };
+            Button[] btns = [btnAnswerA, btnAnswerB, btnAnswerC, btnAnswerD];
 
             // Определяем кол-во доступных кнопок ответов
             var btnsEnabled = btns.Count(btn => btn.Enabled);
@@ -184,7 +178,7 @@ btnAnswerC, btnAnswerD };
         private void btnChangeQuestion_Click(object sender, EventArgs e)
         {
             btnChangeQuestion.Enabled = false;
-            Button[] btns = new Button[] { btnAnswerA, btnAnswerB, btnAnswerC, btnAnswerD };
+            Button[] btns = [btnAnswerA, btnAnswerB, btnAnswerC, btnAnswerD];
 
             foreach (Button btn in btns)
                 btn.Enabled = true;
@@ -235,22 +229,27 @@ btnAnswerC, btnAnswerD };
             }
             else
             {
-                if (isMayBeWrong)
+                WrongAnswer(btnAnswerA);
+            }
+        }
+
+        public void WrongAnswer(Button button)
+        {
+            if (isMayBeWrong)
+            {
+                isMayBeWrong = false;
+                button.Enabled = false;
+            }
+            else
+            {
+                if (level >= fireproofAmountLevel)
                 {
-                    isMayBeWrong = false;
-                    btnAnswerA.Enabled = false;
+                    if (level != 14)
+                        level = fireproofAmountLevel;
                 }
                 else
-                {
-                    if (level >= fireproofAmountLevel)
-                    {
-                        if (level != 14)
-                            level = fireproofAmountLevel;
-                    }
-                    else
-                        level = 0;
-                    FinishGame();
-                }
+                    level = 0;
+                FinishGame();
             }
         }
 
@@ -267,22 +266,7 @@ btnAnswerC, btnAnswerD };
             }
             else
             {
-                if (isMayBeWrong)
-                {
-                    btnAnswerB.Enabled = false;
-                    isMayBeWrong = false;
-                }
-                else
-                {
-                    if (level >= fireproofAmountLevel)
-                    {
-                        if (level != 14)
-                            level = fireproofAmountLevel;
-                    }
-                    else
-                        level = 0;
-                    FinishGame();
-                }
+                WrongAnswer(btnAnswerB);
             }
         }
 
@@ -299,22 +283,7 @@ btnAnswerC, btnAnswerD };
             }
             else
             {
-                if (isMayBeWrong)
-                {
-                    isMayBeWrong = false;
-                    btnAnswerC.Enabled = false;
-                }
-                else
-                {
-                    if (level >= fireproofAmountLevel)
-                    {
-                        if (level != 14)
-                            level = fireproofAmountLevel;
-                    }
-                    else
-                        level = 0;
-                    FinishGame();
-                }
+                WrongAnswer(btnAnswerC);
             }
         }
 
@@ -331,28 +300,8 @@ btnAnswerC, btnAnswerD };
             }
             else
             {
-                if (isMayBeWrong)
-                {
-                    isMayBeWrong = false;
-                    btnAnswerD.Enabled = false;
-                }
-                else
-                {
-                    if (level >= fireproofAmountLevel)
-                    {
-                        if (level != 14)
-                            level = fireproofAmountLevel;
-                    }
-                    else
-                        level = 0;
-                    FinishGame();
-                }
+                WrongAnswer(btnAnswerD);
             }
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            outputDevice.Play();
         }
     }
 }

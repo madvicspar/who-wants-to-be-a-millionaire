@@ -123,7 +123,6 @@
             Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             Name = "ChooseFriends";
             Text = "Кто хочет стать миллионером?";
-            Load += ChooseFriends_Load;
             ResumeLayout(false);
             PerformLayout();
         }

@@ -21,6 +21,7 @@ namespace WhoWantsToBeAMillionaire
             outputDevice.Init(audioFile);
             outputDevice.Volume = 0.01f;
             outputDevice.PlaybackStopped += OutputDevice_PlaybackStopped;
+            outputDevice.Play();
         }
 
         private void OutputDevice_PlaybackStopped(object sender, StoppedEventArgs e)
@@ -44,25 +45,27 @@ namespace WhoWantsToBeAMillionaire
                     return;
                 }
             }
-            List<string> friensNumbers = new List<string>();
+
+            List<string> friendsNumbers = new List<string>();
             foreach (var textbox in textboxes)
             {
-                friensNumbers.Add(textbox.Text);
+                friendsNumbers.Add(textbox.Text);
             }
-            this.Hide();
+
+            ContinueGame(friendsNumbers);
+        }
+
+        public void ContinueGame(List<string> friendsNumbers)
+        {
+            Hide();
             isStopped = true;
             outputDevice.Stop();
             audioFile.Dispose();
             outputDevice.Dispose();
-            Form1.friensNumbers = friensNumbers;
+            Form1.friensNumbers = friendsNumbers;
             Form1 form1 = new Form1();
             form1.ShowDialog();
-            this.Close();
-        }
-
-        private void ChooseFriends_Load(object sender, EventArgs e)
-        {
-            outputDevice.Play();
+            Close();
         }
     }
 }

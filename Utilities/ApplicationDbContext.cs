@@ -1,7 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Configuration;
+using WhoWantsToBeAMillionaire.Models;
 
-namespace WhoWantsToBeAMillionaire
+namespace WhoWantsToBeAMillionaire.Utilities
 {
     public class ApplicationDbContext : DbContext
     {

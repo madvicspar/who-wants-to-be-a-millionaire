@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WhoWantsToBeAMillionaire
+namespace WhoWantsToBeAMillionaire.Models
 {
     public class Player
     {

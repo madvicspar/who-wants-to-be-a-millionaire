@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WhoWantsToBeAMillionaire
+namespace WhoWantsToBeAMillionaire.Models
 {
     public class Question
     {

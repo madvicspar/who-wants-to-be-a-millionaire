@@ -1,6 +1,7 @@
 ﻿using NAudio.Wave;
 using System.Linq;
 using System.Windows.Forms;
+using WhoWantsToBeAMillionaire.Utilities;
 
 namespace WhoWantsToBeAMillionaire
 {

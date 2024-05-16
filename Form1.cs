@@ -1,5 +1,4 @@
-﻿using NAudio.Wave;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -12,6 +11,7 @@ namespace WhoWantsToBeAMillionaire
     }
     public partial class Form1 : Form
     {
+        private AudioManager audioManager;
         public static string userName;
         public static List<Helps> helps = new List<Helps>();
         public static List<string> friensNumbers = new List<string>();
@@ -23,9 +23,6 @@ namespace WhoWantsToBeAMillionaire
         public static int fireproofAmountLevel = 2;
         private List<int> summas = new List<int>() { 3_000_000, 1_500_000, 800_000, 400_000, 200_000, 100_000, 50_000, 25_000, 15_000, 10_000, 5_000, 3_000, 2_000, 1_000, 500 };
 
-        private WaveOutEvent outputDevice;
-        private AudioFileReader audioFile;
-        private bool isStopped = false;
         public Form1()
         {
             InitializeComponent();
@@ -33,22 +30,7 @@ namespace WhoWantsToBeAMillionaire
             GetQuestion(level);
             CheckHelps();
             string audioFilePath = @"../../../audios/q1-5-bed-2008.mp3";
-
-            outputDevice = new WaveOutEvent();
-            audioFile = new AudioFileReader(audioFilePath);
-            outputDevice.Init(audioFile);
-            outputDevice.Volume = 0.01f;
-            outputDevice.PlaybackStopped += OutputDevice_PlaybackStopped;
-            outputDevice.Play();
-        }
-
-        private void OutputDevice_PlaybackStopped(object sender, StoppedEventArgs e)
-        {
-            if (e.Exception == null && !isStopped) // Проверка на завершение воспроизведения без ошибок
-            {
-                audioFile.Position = 0; // Сброс позиции аудиофайла на начало
-                outputDevice.Play(); // Начать воспроизведение заново
-            }
+            audioManager = new AudioManager(audioFilePath);
         }
 
         public void CheckHelps()
@@ -120,10 +102,7 @@ namespace WhoWantsToBeAMillionaire
         {
             AddNote();
             Hide();
-            isStopped = true;
-            outputDevice.Stop();
-            audioFile.Dispose();
-            outputDevice.Dispose();
+            StopMusic();
             GameOver gameOver = new GameOver();
             gameOver.ShowDialog();
             Close();
@@ -196,14 +175,8 @@ namespace WhoWantsToBeAMillionaire
         private void btnCallFriend_Click(object sender, EventArgs e)
         {
             btnCallFriend.Enabled = false;
-            isStopped = true;
-            outputDevice.Stop();
             CallFriend callFriend = new CallFriend();
-            callFriend.FormClosed += (s, args) =>
-            {
-                outputDevice.Play();
-                isStopped = false;
-            };
+            StopMusic();
             callFriend.ShowDialog();
         }
 
@@ -302,6 +275,11 @@ namespace WhoWantsToBeAMillionaire
             {
                 WrongAnswer(btnAnswerD);
             }
+        }
+
+        private void StopMusic()
+        {
+            audioManager.Stop();
         }
     }
 }

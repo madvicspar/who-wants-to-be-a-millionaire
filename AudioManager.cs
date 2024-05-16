@@ -5,11 +5,13 @@ public class AudioManager : IDisposable
 {
     private WaveOutEvent outputDevice;
     private AudioFileReader audioFile;
+    private bool isEnd = false;
 
     public AudioManager(string audioFilePath)
     {
         outputDevice = new WaveOutEvent();
         audioFile = new AudioFileReader(audioFilePath);
+        isEnd = false;
         outputDevice.Init(audioFile);
         outputDevice.Volume = 0.01f;
         outputDevice.PlaybackStopped += OutputDevice_PlaybackStopped;
@@ -18,7 +20,7 @@ public class AudioManager : IDisposable
 
     private void OutputDevice_PlaybackStopped(object sender, StoppedEventArgs e)
     {
-        if (e.Exception == null) // Проверка на завершение воспроизведения без ошибок
+        if (e.Exception == null && !isEnd) // Проверка на завершение воспроизведения без ошибок
         {
             RestartPlayback();
         }
@@ -32,6 +34,7 @@ public class AudioManager : IDisposable
 
     public void Stop()
     {
+        isEnd = true;
         outputDevice.Stop();
         Dispose();
     }

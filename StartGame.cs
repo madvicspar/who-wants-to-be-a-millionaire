@@ -7,29 +7,13 @@ namespace WhoWantsToBeAMillionaire
 {
     public partial class StartGame : Form
     {
-        private WaveOutEvent outputDevice;
-        private AudioFileReader audioFile;
+        private AudioManager audioManager;
         private bool IsStopped = false;
         public StartGame()
         {
             InitializeComponent();
             string audioFilePath = @"../../../audios/hello-new-punter-2008-long.mp3";
-
-            outputDevice = new WaveOutEvent();
-            audioFile = new AudioFileReader(audioFilePath);
-            outputDevice.Init(audioFile);
-            outputDevice.Volume = 0.01f;
-            outputDevice.PlaybackStopped += start_OutputDevice_PlaybackStopped;
-            outputDevice.Play();
-        }
-
-        private void start_OutputDevice_PlaybackStopped(object sender, StoppedEventArgs e)
-        {
-            if (e.Exception == null && !IsStopped) // Проверка на завершение воспроизведения без ошибок
-            {
-                audioFile.Position = 0; // Сброс позиции аудиофайла на начало
-                outputDevice.Play(); // Начать воспроизведение заново
-            }
+            audioManager = new AudioManager(audioFilePath);
         }
 
         private void checkedListBox1_ItemCheck(object sender, ItemCheckEventArgs e)
@@ -107,6 +91,11 @@ namespace WhoWantsToBeAMillionaire
                 Form1 chooseFriends = new Form1();
                 chooseFriends.ShowDialog();
             }
+        }
+
+        private void StartGame_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            audioManager.Stop();
         }
     }
 }

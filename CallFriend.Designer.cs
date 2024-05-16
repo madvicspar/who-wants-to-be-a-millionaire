@@ -92,7 +92,6 @@
             Name = "CallFriend";
             Text = "Кто хочет стать миллионером?";
             FormClosing += CallFriend_FormClosing;
-            Load += CallFriend_Load;
             ResumeLayout(false);
             PerformLayout();
         }

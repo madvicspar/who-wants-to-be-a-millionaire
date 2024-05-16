@@ -395,3 +395,4 @@ FodyWeavers.xsd
 *.msp
 
 /WhoWantsToBeAMillionaire.db
+/App.config

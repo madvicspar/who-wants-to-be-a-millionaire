@@ -1,5 +1,4 @@
-﻿using NAudio.Wave;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -7,30 +6,13 @@ namespace WhoWantsToBeAMillionaire
 {
     public partial class ChooseFriends : Form
     {
-        private WaveOutEvent outputDevice;
-        private AudioFileReader audioFile;
-        bool isStopped = false;
+        private AudioManager audioManager;
         public ChooseFriends()
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
             string audioFilePath = @"../../../audios/hello-new-punter-2008-long.mp3";
-
-            outputDevice = new WaveOutEvent();
-            audioFile = new AudioFileReader(audioFilePath);
-            outputDevice.Init(audioFile);
-            outputDevice.Volume = 0.01f;
-            outputDevice.PlaybackStopped += OutputDevice_PlaybackStopped;
-            outputDevice.Play();
-        }
-
-        private void OutputDevice_PlaybackStopped(object sender, StoppedEventArgs e)
-        {
-            if (e.Exception == null && !isStopped) // Проверка на завершение воспроизведения без ошибок
-            {
-                audioFile.Position = 0; // Сброс позиции аудиофайла на начало
-                outputDevice.Play(); // Начать воспроизведение заново
-            }
+            audioManager = new AudioManager(audioFilePath);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -58,18 +40,10 @@ namespace WhoWantsToBeAMillionaire
         public void ContinueGame(List<string> friendsNumbers)
         {
             Hide();
-            StopMusic();
+            audioManager.Stop();
             Form1.friensNumbers = friendsNumbers;
             Form1 form1 = new Form1();
             form1.ShowDialog();
-        }
-
-        private void StopMusic()
-        {
-            isStopped = true;
-            outputDevice.Stop();
-            audioFile.Dispose();
-            outputDevice.Dispose();
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using NAudio.Wave;
-using System;
+﻿using System;
 using System.Windows.Forms;
 
 namespace WhoWantsToBeAMillionaire
@@ -8,9 +7,7 @@ namespace WhoWantsToBeAMillionaire
     {
         int time = 80;
         private Random rnd = new Random();
-        private WaveOutEvent outputDevice;
-        private AudioFileReader audioFile;
-        bool isStopped = false;
+        private AudioManager audioManager;
         public CallFriend()
         {
             InitializeComponent();
@@ -18,21 +15,7 @@ namespace WhoWantsToBeAMillionaire
             timer1.Interval = time;
             label2.Text = time.ToString();
             string audioFilePath = @"../../../audios/khsm_phone_countdown.mp3";
-
-            outputDevice = new WaveOutEvent();
-            audioFile = new AudioFileReader(audioFilePath);
-            outputDevice.Init(audioFile);
-            outputDevice.Volume = 0.03f;
-            outputDevice.PlaybackStopped += OutputDevice_PlaybackStopped;
-        }
-
-        private void OutputDevice_PlaybackStopped(object sender, StoppedEventArgs e)
-        {
-            if (e.Exception == null && !isStopped) // Проверка на завершение воспроизведения без ошибок
-            {
-                audioFile.Position = 0; // Сброс позиции аудиофайла на начало
-                outputDevice.Play(); // Начать воспроизведение заново
-            }
+            audioManager = new AudioManager(audioFilePath);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -73,18 +56,10 @@ namespace WhoWantsToBeAMillionaire
             time--;
         }
 
-        private void CallFriend_Load(object sender, EventArgs e)
-        {
-            outputDevice.Play();
-        }
-
         private void CallFriend_FormClosing(object sender, FormClosingEventArgs e)
         {
             timer1.Stop();
-            isStopped = true;
-            outputDevice.Stop();
-            audioFile.Dispose();
-            outputDevice.Dispose();
+            audioManager.Stop();
         }
     }
 }

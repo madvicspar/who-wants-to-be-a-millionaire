@@ -1,5 +1,4 @@
 ﻿using NAudio.Wave;
-using System;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -20,6 +19,7 @@ namespace WhoWantsToBeAMillionaire
             outputDevice.Init(audioFile);
             outputDevice.Volume = 0.01f;
             outputDevice.PlaybackStopped += OutputDevice_PlaybackStopped;
+            outputDevice.Play();
         }
 
         private void OutputDevice_PlaybackStopped(object sender, StoppedEventArgs e)
@@ -39,11 +39,6 @@ namespace WhoWantsToBeAMillionaire
                 dataGridView1.DataSource = playersList;
                 dataGridView1.Columns[0].Visible = false;
             }
-        }
-
-        private void GameOver_Load(object sender, EventArgs e)
-        {
-            outputDevice.Play();
         }
 
         private void GameOver_FormClosing(object sender, FormClosingEventArgs e)

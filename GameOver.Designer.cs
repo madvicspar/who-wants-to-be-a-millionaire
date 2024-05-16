@@ -68,7 +68,6 @@
             Name = "GameOver";
             Text = "Кто хочет стать миллионером?";
             FormClosing += GameOver_FormClosing;
-            Load += GameOver_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }

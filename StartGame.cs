@@ -93,6 +93,7 @@ namespace WhoWantsToBeAMillionaire
 
         public void ContinueGame()
         {
+            Hide();
             List<Helps> helps = GetHelps();
             if (helps.Contains(Helps.callFriend))
             {
@@ -106,7 +107,6 @@ namespace WhoWantsToBeAMillionaire
                 Form1 chooseFriends = new Form1();
                 chooseFriends.ShowDialog();
             }
-            this.Close();
         }
     }
 }

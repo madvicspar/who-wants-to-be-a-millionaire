@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -37,6 +32,11 @@ namespace WhoWantsToBeAMillionaire
                 }
             }
 
+            GetChart(answersProbability);
+        }
+
+        private void GetChart(List<int> answersProbability)
+        {
             StartPosition = FormStartPosition.CenterScreen;
 
             var answers = new[] { "Ответ A", "Ответ B", "Ответ C", "Ответ D" };

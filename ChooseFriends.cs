@@ -58,14 +58,18 @@ namespace WhoWantsToBeAMillionaire
         public void ContinueGame(List<string> friendsNumbers)
         {
             Hide();
+            StopMusic();
+            Form1.friensNumbers = friendsNumbers;
+            Form1 form1 = new Form1();
+            form1.ShowDialog();
+        }
+
+        private void StopMusic()
+        {
             isStopped = true;
             outputDevice.Stop();
             audioFile.Dispose();
             outputDevice.Dispose();
-            Form1.friensNumbers = friendsNumbers;
-            Form1 form1 = new Form1();
-            form1.ShowDialog();
-            Close();
         }
     }
 }
